@@ -1,6 +1,6 @@
 # odin-rock-paper-scissors
 
-first fast js project
+first fast github js project
 
 only console version
 
