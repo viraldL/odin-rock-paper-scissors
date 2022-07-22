@@ -4,4 +4,4 @@ first fast js project
 
 only console version
 
-[Play here!]()
+[Play here!](https://viraldl.github.io/odin-rock-paper-scissors/)
