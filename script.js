@@ -24,8 +24,13 @@ function getComputerChoice() {
 }
 
 function round(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    
+    if (playerSelection === null){
+        playerSelection = "error";
+    } else {
+        playerSelection = playerSelection.toLowerCase();
+    }
+
+
     if (playerSelection === computerSelection) {
         return console.log(`Draw!`)
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
@@ -34,6 +39,8 @@ function round(playerSelection, computerSelection) {
     } else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
         computerScore++;
         return console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+    } else {
+        return console.log(`Type "rock", "paper" or "scissors"`)
     }
 }
 
