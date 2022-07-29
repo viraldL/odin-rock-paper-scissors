@@ -13,7 +13,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: relative;
+    background-color: #fff;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    background-image: url(/images/aesthetic-minimal-white-grid-pattern-wallpaper.jpg);
+    background-size: cover;
+    z-index: -2;
+    opacity: 0.2;
 }
 
 h1 {
@@ -25,6 +39,7 @@ h1 {
 }
 
 .btns {
+    margin: 10px 0;
     width: 20%;
     height: 100px;
     display: flex;
@@ -42,4 +57,79 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+}
+
+.score {
+    width: 35%;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playboard {
+    margin: 50px 0;
+    width: 30%;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#bg-1 {
+    position: absolute;
+    background-image: linear-gradient(to right, transparent 10%, #fff 80%, transparent 10%);
+    left: 0;
+    width: 30%;
+    height: 100%;
+    z-index: -1;
+}
+
+#bg-center {
+    position: absolute;
+    background-color: #fff;
+    width: 52%;
+    height: 100%;
+    z-index: -1;
+}
+
+#bg-2 {
+    position: absolute;
+    right: 0;
+    background-image: linear-gradient(to left, transparent 10%, #fff 80%, transparent 10%);
+    width: 30%;
+    height: 100%;
+    z-index: -1;
+}
+
+footer {
+    background-color: #000;
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer > p {
+    color: #fff;
+}
+
+footer > a {
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+#winner {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    font-style: italic;
+    margin: 10px 0;
 }
