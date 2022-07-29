@@ -1,6 +1,9 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const playerScoreBox =  document.querySelector("#playerScore");
+const computerScoreBox = document.querySelector("#computerScore")
+
 function getComputerChoice() {
     let computerRandom = Math.floor(Math.random()*3 +1);
     let computerChoice = "";
@@ -28,7 +31,7 @@ function round(playerSelection, computerSelection) {
         playerSelection = "error";
     } else {
         playerSelection = playerSelection.toLowerCase();
-    }
+    }playerScore
 
 
     if (playerSelection === computerSelection) {
@@ -40,25 +43,30 @@ function round(playerSelection, computerSelection) {
         computerScore++;
         return console.log(`You win! ${playerSelection} beats ${computerSelection}`)
     } else {
+        if (playerScore === computerScore) {
+            console.log("%cDraw!", "font-weight: bold; font-size: 1.5em;")
+        } else if (playerScore > computerScore) {
+            console.log(`%cYou won the game! Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
+        } else if (computerScore > playerScore) {
+            console.log(`%cYou lost the game :(. Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
+        }
+
         return console.log(`Type "rock", "paper" or "scissors"`)
     }
 }
 
 function game() {
-    for(let i = 0; i < 5; i++){
-        console.log("======================================");
-        console.log(`Round ${i+1}`)
-        round(prompt("Rock, paper or scissors?") ,getComputerChoice());
-        console.log(`Your score: ${playerScore}`)
-        console.log(`Computer score: ${computerScore}`)
-    }
-    if (playerScore === computerScore) {
-        console.log("%cDraw!", "font-weight: bold; font-size: 1.5em;")
-    } else if (playerScore > computerScore) {
-        console.log(`%cYou won the game! Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
-    } else if (computerScore > playerScore) {
-        console.log(`%cYou lost the game :(. Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
-    }
+
+        // round(prompt("Rock, paper or scissors?") ,getComputerChoice());
+
 }
 
-game()
+
+
+const btns = document.querySelectorAll(".btns i")
+
+btns.forEach(btn => {
+    btn.addEventListener("click", function(){
+        round(btn.id ,getComputerChoice())
+    })
+})

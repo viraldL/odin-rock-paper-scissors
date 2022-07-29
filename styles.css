@@ -45,6 +45,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .btns i {
@@ -132,4 +133,16 @@ footer > a {
     color: #fff;
     font-style: italic;
     margin: 10px 0;
+}
+
+#winnerFull {
+    width: fit-content;
+    height: fit-content;
+    font-size: 2rem;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    font-style: italic;
+    margin: 10px 0;
+    opacity: 0;
 }
