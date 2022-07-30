@@ -148,13 +148,13 @@ footer > a {
     background-color: #000;
     color: #fff;
     font-style: italic;
-    margin: 10px 0;
+    margin: 15px 0;
     opacity: 0;
 }
 
 #reset {
     cursor: pointer;
-    margin-top: 40px;
+
     border: none;
     padding: 10px 20px;
     border: 2px solid black;

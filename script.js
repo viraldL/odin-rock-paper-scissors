@@ -1,6 +1,9 @@
+//scores variables
 let playerScore = 0;
 let computerScore = 0;
 
+//DOM elements
+const btns = document.querySelectorAll(".btns i");
 const playerScoreBox =  document.querySelector("#playerScore");
 const computerScoreBox = document.querySelector("#computerScore")
 const winnerRound = document.querySelector("#winner");
@@ -9,6 +12,7 @@ const computerImg = document.querySelector("#computer")
 const playerImg = document.querySelector("#player")
 const reset = document.querySelector("#reset")
 
+//randomly generate computer choice
 function getComputerChoice() {
     computerImg.removeAttribute("class");
     let computerRandom = Math.floor(Math.random()*3 +1);
@@ -35,57 +39,64 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+//play round
 function round(playerSelection, computerSelection) {
+    //reset the texts at start
     winnerRound.innerText = "..."
     winnerFull.innerText = ""
+
+    //if null - error "for console version"
     if (playerSelection === null){
         playerSelection = "error";
     } else {
         playerSelection = playerSelection.toLowerCase();
-    }playerScore
+    }
 
-
+    //check who won the single round
     if (playerSelection === computerSelection) {
         winnerRound.innerText = "Draw!";
-        return console.log(`Draw!`)
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
         playerScore++;
         playerScoreBox.innerText = playerScore;
         winnerRound.innerText = "You win!";
-        return console.log(`You win! ${playerSelection} beats ${computerSelection}`)
     } else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
         computerScore++;
         computerScoreBox.innerText = computerScore;
         winnerRound.innerText = "Computer win!";
-        return console.log(`You win! ${playerSelection} beats ${computerSelection}`)
-    } else {
-        if (playerScore === 5) {
-            winnerFull.innerText = "You won the game!"
-            console.log("%cDraw!", "font-weight: bold; font-size: 1.5em;")
-        } else if (computerScore === 5) {
-            winnerFull.innerText = "You lost the game :("
-            console.log(`%cYou won the game! Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
-        } else if (computerScore > playerScore) {
-            console.log(`%cYou lost the game :(. Your score is ${playerScore}!`, "font-weight: bold; font-size: 1.5em;")
-        }
+    }    
+}
 
-        return console.log(`Type "rock", "paper" or "scissors"`)
+//check if someone won
+function checkWin() {
+    if (playerScore === 5){
+        winnerFull.style.opacity = "1";
+        winnerFull.innerText = "You won the game!"
+        return 1;
+    } else if (computerScore === 5) {
+        winnerFull.style.opacity = "1";
+        winnerFull.innerText = "You lost the game :("
+        return 1;
     }
 }
 
-function game() {
-
-        // round(prompt("Rock, paper or scissors?") ,getComputerChoice());
-
-}
-
-const btns = document.querySelectorAll(".btns i")
-
+//rock paper scissors buttons
 btns.forEach(btn => {
     btn.addEventListener("click", function(){
-        playerImg.removeAttribute("class")
-        round(btn.id ,getComputerChoice())
+        //if someone won - stop the game else - play
+        if (checkWin()) {
+            alert(`Restart the game by clicking "Reset" button!`);
+        } else {
 
+        //remove class before adding new one
+        playerImg.removeAttribute("class")
+
+        //play round
+        round(btn.id ,getComputerChoice())
+        
+        //check if someone won
+        checkWin()
+
+        //putting the icon aboce as a player choice
         switch (btn.id) {
             case "rock":
                 playerImg.setAttribute("class", "fa-regular fa-hand-back-fist")
@@ -99,9 +110,11 @@ btns.forEach(btn => {
             default:
                 break;        
         }
+    }
     })
 })
 
+//reset btn
 reset.addEventListener("click", () => {
     playerScore = 0;
     computerScore = 0;
