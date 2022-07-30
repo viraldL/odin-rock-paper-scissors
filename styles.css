@@ -41,6 +41,7 @@ h1 {
 .btns {
     margin: 10px 0;
     width: 20%;
+    min-width: 170px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -51,6 +52,7 @@ h1 {
 .btns i {
     cursor: pointer;
     width: 100px;
+    min-width: 50px;
     height: 100px;
     border: 3px solid black;
     border-radius: 10px;
@@ -80,6 +82,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
 }
 
 #bg-1 {
@@ -154,7 +157,6 @@ footer > a {
 
 #reset {
     cursor: pointer;
-
     border: none;
     padding: 10px 20px;
     border: 2px solid black;
@@ -164,4 +166,40 @@ footer > a {
 
 #reset:hover {
     transform: scale(1.05);
+}
+
+@media (max-width: 1000px){
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .btns, .playboard, #winnerFull, #winner {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .playboard {
+        gap: 20px;
+    }
+
+    #winnerFull {
+        font-size: 1rem;
+    }
+
+    #winner {
+        font-size: 0.8em;
+    }
+
+    footer > a {
+        font-size: 0.5em;
+    }
+
+    footer > p {
+        font-size: 0.8em;
+    }
 }
