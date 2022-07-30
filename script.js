@@ -7,6 +7,7 @@ const winnerRound = document.querySelector("#winner");
 const winnerFull = document.querySelector("#winnerFull")
 const computerImg = document.querySelector("#computer")
 const playerImg = document.querySelector("#player")
+const reset = document.querySelector("#reset")
 
 function getComputerChoice() {
     computerImg.removeAttribute("class");
@@ -78,8 +79,6 @@ function game() {
 
 }
 
-
-
 const btns = document.querySelectorAll(".btns i")
 
 btns.forEach(btn => {
@@ -101,4 +100,13 @@ btns.forEach(btn => {
                 break;        
         }
     })
+})
+
+reset.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    computerScoreBox.innerText = computerScore;
+    playerScoreBox.innerText = playerScore;
+    winnerRound.innerText = "..."
+    winnerFull.style.opacity = "0"
 })
